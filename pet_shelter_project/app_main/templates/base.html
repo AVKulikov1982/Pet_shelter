@@ -1,0 +1,111 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  {% block title %}
+  <title>Приложение для управления базой данных животных</title>
+  {% endblock title %}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, charset=UTF-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+  <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/image_slide.js' %}"></script>
+</head>
+
+<body>
+<div id="main">
+  <!---Шапка--->
+  <div id="header">
+    <div class="header__content">
+      <div>
+        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+        <input name="next" type="hidden" value="{{ redirect_to }}">
+        <select class="custom_select" name="language">
+          {% get_current_language as LANGUAGE_CODE %}
+          {% get_available_languages as LANGUAGES %}
+          {% get_language_info_list for LANGUAGES as languages %}
+          {% for language in languages %}
+            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+              {{ language.name_local }} ({{ language.code }})
+            </option>
+          {% endfor %}
+        </select>
+        <button class="btn" type="submit">выбрать</button>
+      </form>
+      </div>
+      <div>
+        <a href="/"><button class="btn">Личный кабинет</button></a>
+      </div>
+    </div>
+    <div class="navigation">
+      <div id="welcome">
+        <h1 class="title">Приют питомцев</h1>
+      </div>
+      <!--Меню-->
+      <div id="menubar">
+        {% block menu %}
+        <ul id="menu">
+          <li class="current"><a href="/">Главная</a></li>
+          <li><a href="/catalog">Животные</a></li>
+          <li><a href="/add_pets">Добавить</a></li>
+          <li><a href="/contacts">Контакты</a></li>
+        </ul>
+        {% endblock menu %}
+      </div>
+      <!--Конец меню-->
+    </div>
+  </div>
+  <!--Конец шапки-->
+  <!---Контент--->
+  <div id="site_content">
+    <!---Текст--->
+    <div id="text_content">
+      {% block content %}
+      <h2>{% trans "Волонтерский проект" %}</h2>
+      <p>{% trans "Сайт приюта для бездомных животных создан на добровольной основе." %}<br />
+      {% trans "Наша цель — помощь животным приюта и привлечение внимания к проблемам бездомных животных." %}<br />
+      {% trans "В первую очередь, мы хотим помочь обрести нашим подопечным свой дом и хозяев." %}<br />
+      {% trans "Животных много, хороших и несчастных! Давайте поможем безнадзорным животным вместе!" %}<br />
+      {% trans "Спасите одну жизнь — возьмите домой средоточие радости и благодарности!" %}</p>
+      {% endblock content %}
+    </div>
+    <!---Конец текст--->
+    <!---Слайдер--->
+    <ul class="slideshow">
+      <li class="show"><img width="500" height="450" src="{% static 'images/1.jpg' %}"/></li>
+      <li><img width="500" height="450" src="{% static 'images/2.jpg' %}"/></li>
+      <li><img width="500" height="450" src="{% static 'images/3.jpg' %}"/></li>
+      <li><img width="500" height="450" src="{% static 'images/4.jpg' %}"/></li>
+    </ul>
+    <!---Конец слайдер--->
+  </div>
+  <!--Конец контент-->
+</div>
+
+<div id="footer">
+<!---Подвал--->
+  <div id="footer_container">
+    <div class="footer_container_box">
+      <h2 align="center">{% trans "Блок левый" %}</h2>
+      <p>{% trans "Дополнительное описание" %}</p>
+      <a href="#">{% trans "Подробнее" %}</a>
+    </div>
+    <div class="footer_container_box">
+      <h2 align="center">{% trans "Блок средний" %}</h2>
+      <p>{% trans "Дополнительное описание" %}</p>
+      <a href="#">{% trans "Подробнее" %}</a>
+    </div>
+    <div class="footer_container_boxl">
+      <h2 align="center">{% trans "Блок правый" %}</h2>
+      <p>{% trans "Дополнительное описание" %}</p>
+      <a href="#">{% trans "Подробнее" %}</a>
+    </div>
+    <div class="footer_links">
+    <a href="/">{% trans "Приют питомцев" %}</a> | <a href="/api">{% trans "API" %}</a> | <a href="/contacts">{% trans "Контакты" %}</a>
+    </div>
+  </div>
+<!---Конец подвал--->
+</div>
+
+</body>
+</html>

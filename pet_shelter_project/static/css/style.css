@@ -7,11 +7,12 @@ html
 
 body
 { font: normal 95% Georgia, serif, Arial;
-  background: #1D1D1D url(../images/pattern.png) repeat;
+  background: #1D1D1D;
   color: #FFF;}
 
 p
-{ padding: 0 0 15px 0;
+{ margin: 0;
+  padding: 0;
   line-height: 1.7em;
   font-size: 100% }
 
@@ -27,10 +28,10 @@ h1, h2, h3, h4, h5, h6
   padding: 5px 0 0 0;}
 
 h2
-{ font: normal 165% Georgia, serif;}
+{ font: normal 135% Georgia, serif;}
 
 h3
-{ font: normal 100% Georgia, serif;
+{ font: normal 120% Georgia, serif;
 }
 
 h3 a, h3 a:hover
@@ -40,24 +41,26 @@ h3 a, h3 a:hover
 h4, h5, h6
 { margin: 0;
   padding: 0 0 5px 0;
-  font: normal 150% Georgia, serif;
-  color: #057EBF;
+  font: normal 50% Georgia, serif;
   line-height: 1.5em;}
 
 h5, h6
 { font: normal 95% Georgia, serif;
-  color: #888;
   padding-bottom: 15px;}
 
 a, a:hover
 { background: transparent;
   outline: none;
   text-decoration: none;
-  color: #057EBF;
+  color: #CC9933;
 }
 
-a:hover
-{ text-decoration: underline;}
+a:hover {
+  color: #FFFFFF;
+  transition-property: color, background-color;
+  transition-duration:  0.5s;
+  transition-timing-function: ease;
+}
 
 ul
 { margin: 2px 0 22px 30px;
@@ -77,9 +80,21 @@ ol li
 
 #header
 { width: 1065px;
-  height: 55px;
   padding: 50px 0 0 0;
   background: transparent;}
+
+.header__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navigation {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 #welcome
 { width: 380px;
@@ -93,16 +108,6 @@ ol li
 { font: normal 200% times, Helvetica, sans-serif;
   color: #FFF;}
   
-span
-{ color: #057EBF;}
-
-
-#title
-{
-
-}
-
- 
 #menubar
 { width: 525px;
   height: 35px;
@@ -138,7 +143,7 @@ ul#menu li a
   height: 30px;
   padding: 15px 25px 10px 25px;
   text-align: center;
-  color: #FFF;
+  color: #CC9933;
   text-decoration: none;} 
 
 ul#menu li a:hover
@@ -146,7 +151,7 @@ ul#menu li a:hover
   text-decoration: underline;}
   
 ul#menu li.current a
-{ color: #057EBF;
+{ color: #916200;
   text-decoration: underline;}
 
 #site_content
@@ -160,15 +165,21 @@ ul#menu li.current a
   box-shadow: inset 5px 5px 30px 5px #535353;
   border-radius: 15px 0px 15px 15px;
   -moz-border-radius: 0px 15px 15px 15px;
-  -webkit-border: 15px 0px 15px 15px;} 
-  
+  -webkit-border: 15px 0px 15px 15px;}
+
 #text_content
 { float: left;
   width: 500px;
   padding: 0; 
   margin: 0 20px 0 20px;}
 
-/* —Î‡È‰Â */
+
+.contact-text {
+  margin-top: 15px;
+  font: normal 80% Georgia, serif, Arial;
+}
+
+/* –°–ª–∞–π–¥–µ—Ä */
 ul.slideshow {
   list-style: none;
   width: 500px;
@@ -200,16 +211,6 @@ ul img {
   left: 0; 
   z-index: 500;}
  
-#slideshow-caption .slideshow-caption-container {
-  background: transparent url(../images/transparent.png) repeat;  
-  padding: 10px 45px 10px 25px;   
-  z-index: 1000;}
- 
-#slideshow-caption p {
-  padding: 0;
-  font: normal 130% arial, sans-serif;
-  color: #FFF;}  
-  
 #footer
 { font: normal 120% Georgia, serif;
   width: 1070px;
@@ -219,13 +220,6 @@ ul img {
   background: transparent;
   color: #FFF;}
 
-#footer a, #footer a:hover
-{ color: #FFF;
-  text-decoration: none;}
-
-#footer a:hover
-{ text-decoration: underline;}
-
 .footer_container_box
 { font: normal 80% Arial, Helvetica, sans-serif;
   width: 325px;
@@ -234,7 +228,7 @@ ul img {
   margin: 10px 10px 10px 10px;
   float: left;
   background: transparent;
-  color: #FFF;}
+  }
 
 .footer_container_boxl
 { font: normal 80% Arial, Helvetica, sans-serif;
@@ -245,6 +239,10 @@ ul img {
   float: left;
   background: transparent;
   color: #FFF;}
+
+.footer_links
+{ font: normal 65% Georgia, serif, Arial;
+  }
 
 .form_settings
 { margin: 15px 0 0 0;}
@@ -274,13 +272,46 @@ ul img {
   color: #47433F;
   margin: 28px 0;}
 
-.form_settings .submit
+.form_settings
 { font: 100% arial; 
   border: 1px solid; 
   width: 99px; 
   margin: 0 0 0 206px; 
   height: 26px;
   padding: 2px 0 3px 0;
-  cursor: pointer; 
-  background: #5082BD; 
+  background: #5082BD;
   color: #FFF;}
+
+.btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 2px 10px;
+  font-size: 10px;
+  line-height: 15px;
+  color: #CC9933;
+  border: 1px solid #CC9933;
+  border-radius: 5px;
+  transition-property: color, background-color;
+  transition-duration:  0.5s;
+  transition-timing-function: ease;
+}
+
+.btn:focus, .btn:hover {
+  outline: none;
+  font-weight: normal;
+  color: #FFFFFF;
+  background-color: #CC9933;
+}
+
+.btn:active {
+  font-weight: normal;
+  color: #FFFFFF;
+  background-color: #A47312;
+}
+
+.custom_select {
+  background-color: #A47312;
+  border-radius: 5px;
+  height: 20.5px;
+}
