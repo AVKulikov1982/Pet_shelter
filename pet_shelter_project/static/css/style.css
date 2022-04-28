@@ -41,7 +41,7 @@ h3 a, h3 a:hover
 h4, h5, h6
 { margin: 0;
   padding: 0 0 5px 0;
-  font: normal 50% Georgia, serif;
+  font: normal 80% Georgia, serif;
   line-height: 1.5em;}
 
 h5, h6
@@ -87,6 +87,11 @@ ol li
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.header__name {
+  line-height: 1em;
+  margin-right: 5px;
 }
 
 .navigation {

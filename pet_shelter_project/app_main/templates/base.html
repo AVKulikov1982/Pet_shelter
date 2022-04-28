@@ -33,9 +33,26 @@
         <button class="btn" type="submit">выбрать</button>
       </form>
       </div>
-      <div>
-        <a href="/"><button class="btn">Личный кабинет</button></a>
+      {% if request.user.is_authenticated %}
+      <div style="display: flex;">
+        <p class="header__name">Привет {{ request.user.username }}!</p>
+        <div style="margin-right: 5px;">
+          <button class="btn"><a href="/profile/{{ request.user.id }}">{% trans "Личный кабинет" %}</a></button>
+        </div>
+        <div>
+          <button class="btn"><a href="/logout">{% trans "Выйти" %}</a></button>
+        </div>
       </div>
+      {% else %}
+      <div style="display: flex;">
+        <div style="margin-right: 5px;">
+          <button class="btn"><a href="/registration">{% trans "Регистрация" %}</a></button>
+        </div>
+        <div>
+          <button class="btn"><a href="/login">{% trans "Войти" %}</a></button>
+        </div>
+      </div>
+      {% endif %}
     </div>
     <div class="navigation">
       <div id="welcome">

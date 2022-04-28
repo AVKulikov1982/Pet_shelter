@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+  <h2>Редактирование</h2>
+    <form method="post" action="/profile/update/{{ request.user.id }}" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% if avatar %}
+      <img src="/media/{{ avatar }}">
+      {% endif %}
+      <p>Username - {{ user_form.username }}</p>
+      <p> Имя - {{ user_form.first_name }}</p>
+      <p>Фамилия - {{ user_form.last_name }}</p>
+      <p>загрузить аватар</p>
+      {{ avatar_form.as_p }}
+      <p>Email - {{ user_form.email }}</p>
+      <p>Новый пароль - {{ update_form.new_pass1 }}</p>
+      <p>Новый пароль еще раз - {{ update_form.new_pass2 }}</p>
+      <button class="btn" type="submit">Редактировать</button>
+    </form>
+{% endblock content %}
