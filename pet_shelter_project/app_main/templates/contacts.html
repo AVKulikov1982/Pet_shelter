@@ -4,7 +4,9 @@
 <ul id="menu">
   <li><a href="/">Главная</a></li>
   <li><a href="/catalog">Животные</a></li>
-  <li><a href="/add_pets">Добавить</a></li>
+  {% if request.user.is_authenticated %}
+  <li><a href="/add_pet">Добавить</a></li>
+  {% endif %}
   <li class="current"><a href="/contacts">Контакты</a></li>
 </ul>
 {% endblock menu %}

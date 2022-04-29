@@ -1,0 +1,24 @@
+﻿{% extends "base.html" %}
+{% load i18n %}
+
+{% block menu %}
+<ul id="menu">
+  <li><a href="/">Главная</a></li>
+  <li class="current"><a href="/catalog">Животные</a></li>
+  {% if request.user.is_authenticated %}
+  <li><a href="/add_pet">Добавить</a></li>
+  {% endif %}
+  <li><a href="/contacts">Контакты</a></li>
+</ul>
+{% endblock menu %}
+
+{% block content %}
+<h1>Каталог животных</h1>
+<div id="catalog">
+  <ul id="catalog__menu">
+    {% for value in context %}
+    <li><a href="{{ value.id }}">{{ value.title }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock content %}

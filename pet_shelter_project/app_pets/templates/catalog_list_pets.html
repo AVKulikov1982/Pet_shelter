@@ -1,0 +1,33 @@
+﻿{% extends "base.html" %}
+{% load i18n %}
+
+{% block menu %}
+<ul id="menu">
+  <li><a href="/">Главная</a></li>
+  <li class="current"><a href="/catalog">Животные</a></li>
+  {% if request.user.is_authenticated %}
+  <li><a href="/add_pet">Добавить</a></li>
+  {% endif %}
+  <li><a href="/contacts">Контакты</a></li>
+</ul>
+{% endblock menu %}
+
+{% block content %}
+<h1>Каталог животных</h1>
+<div id="catalog">
+  <ul class="pet_cards">
+    {% for pet in pets %}
+    <li class="pet_card">
+      <a href="pet/{{ pet.id }}">
+        <p>{{ pet.name }}</p>
+        <p>{{ pet.special_signs }}</p>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+
+</div>
+{% endblock content %}
+
+{% block slider %}
+{% endblock slider %}

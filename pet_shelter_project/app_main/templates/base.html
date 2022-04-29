@@ -36,6 +36,11 @@
       {% if request.user.is_authenticated %}
       <div style="display: flex;">
         <p class="header__name">Привет {{ request.user.username }}!</p>
+        {% if request.user.is_superuser %}
+        <div style="margin-right: 5px;">
+          <button class="btn"><a href="/admin">{% trans "Админка" %}</a></button>
+        </div>
+        {% endif %}
         <div style="margin-right: 5px;">
           <button class="btn"><a href="/profile/{{ request.user.id }}">{% trans "Личный кабинет" %}</a></button>
         </div>
@@ -64,7 +69,9 @@
         <ul id="menu">
           <li class="current"><a href="/">Главная</a></li>
           <li><a href="/catalog">Животные</a></li>
-          <li><a href="/add_pets">Добавить</a></li>
+          {% if request.user.is_authenticated %}
+          <li><a href="/add_pet">Добавить</a></li>
+          {% endif %}
           <li><a href="/contacts">Контакты</a></li>
         </ul>
         {% endblock menu %}
@@ -88,6 +95,7 @@
     </div>
     <!---Конец текст--->
     <!---Слайдер--->
+    {% block slider %}
     <ul class="slideshow">
       <li class="show"><img width="500" height="450" src="{% static 'images/1.jpg' %}"/></li>
       <li><img width="500" height="450" src="{% static 'images/2.jpg' %}"/></li>
@@ -95,6 +103,7 @@
       <li><img width="500" height="450" src="{% static 'images/4.jpg' %}"/></li>
     </ul>
     <!---Конец слайдер--->
+    {% endblock slider %}
   </div>
   <!--Конец контент-->
 </div>

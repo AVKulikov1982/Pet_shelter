@@ -77,6 +77,7 @@ class UpdateProfileView(View):
 def register(request):
 	if request.method == 'POST':
 		register_form = RegisterForm(request.POST)
+		print(register_form)
 		if register_form.is_valid():
 			user = register_form.save()
 			Profile.objects.create(user=user)
@@ -86,7 +87,7 @@ def register(request):
 			user = authenticate(username=username, password=row_password)
 			logger.info(f'Аутентификация пользователя {username}')
 			login(request, user)
-			return render(request, 'main.html')
+			return render(request, 'index.html')
 	else:
 		register_form = RegisterForm()
 	return render(request, 'registration.html', context={'register_form': register_form})
