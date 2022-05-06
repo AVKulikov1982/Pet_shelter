@@ -178,7 +178,7 @@ ul#menu li.current a
 { float: left;
   width: 500px;
   padding: 0; 
-  margin: 0 20px 0 20px;}
+  margin: 0 40px 0 20px;}
 
 
 .contact-text {
@@ -189,7 +189,7 @@ ul#menu li.current a
 /* Слайдер */
 ul.slideshow {
   list-style: none;
-  width: 500px;
+  width: 480px;
   height: 450px;
   overflow: hidden;
   position: relative;
@@ -331,6 +331,7 @@ ul img {
 
 .pet_cards_title {
   padding-left: 20px;
+  margin-bottom: 20px;
 }
 
 .pet_card_img {
