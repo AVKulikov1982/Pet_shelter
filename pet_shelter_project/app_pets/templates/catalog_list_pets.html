@@ -1,6 +1,6 @@
 ﻿{% extends "base.html" %}
 {% load i18n %}
-
+{% load static %}
 {% block menu %}
 <ul id="menu">
   <li><a href="/">Главная</a></li>
@@ -13,12 +13,15 @@
 {% endblock menu %}
 
 {% block content %}
-<h1>Каталог животных</h1>
+
+<h2 class="pet_cards_title">Каталог животных</h2>
+<div>
 <div id="catalog">
   <ul class="pet_cards">
     {% for pet in pets %}
     <li class="pet_card">
       <a href="pet/{{ pet.id }}">
+        <img class="pet_card_img" src="{% static 'images/pets/2_cat.jpg' %}">
         <p>{{ pet.name }}</p>
         <p>{{ pet.special_signs }}</p>
       </a>
@@ -26,6 +29,7 @@
     {% endfor %}
   </ul>
 
+</div>
 </div>
 {% endblock content %}
 

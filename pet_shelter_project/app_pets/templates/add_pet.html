@@ -3,19 +3,17 @@
 
 {% block menu %}
 <ul id="menu">
-  {% if request.user.is_authenticated %}
-  <li><a href="/add_pet">Добавить</a></li>
-  <li><a href="/update_pet">Редактировать</a></li>
-    {% if request.user.is_superuser %}
-    <li><a href="/delete_pet">Удалить</a></li>
-    {% endif %}
-  {% else %}
   <li><a href="/">Главная</a></li>
+  <li><a href="/catalog">Животные</a></li>
+  {% if request.user.is_authenticated %}
+  <li class="current"><a href="/add_pet">Добавить</a></li>
   {% endif %}
+  <li><a href="/contacts">Контакты</a></li>
 </ul>
 {% endblock menu %}
 
 {% block content %}
+<div id="text_content">
   <h2>Добавить питомца</h2>
     <form method="post" action="/add_pet" enctype="multipart/form-data">
       {% csrf_token %}
@@ -28,4 +26,5 @@
       <p>Особые приметы - {{ pet_form.special_signs }}</p>
       <button class="btn" type="submit">Добавить</button>
     </form>
+</div>
 {% endblock content %}

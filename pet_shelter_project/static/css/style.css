@@ -63,7 +63,7 @@ a:hover {
 }
 
 ul
-{ margin: 2px 0 22px 30px;
+{ margin: 2px 0 22px 0px;
   line-height: 1.7em;
   font-style: normal;
   font-size: 100%;
@@ -73,7 +73,7 @@ ol
 { margin: 8px 0 22px 20px;}
 
 ol li
-{ margin: 0 0 11px 0;
+{ margin: 0;
   list-style: none;}
 
 #main, #header, #banner, #menubar, #site_content, #footer
@@ -325,12 +325,23 @@ ul img {
 
 .pet_cards {
   display: flex;
+  padding: 0 20px 0 20px;
   flex-wrap: wrap;
+}
 
+.pet_cards_title {
+  padding-left: 20px;
+}
+
+.pet_card_img {
+  width: 229px;
+  height: 167px;
 }
 
 .pet_card {
-  width: 150px;
+  width: 229px;
+  height: 227px;
+  padding: 5px;
   flex-direction: column;
   border: 1px solid #CC9933;
   border-radius: 5px;
@@ -338,9 +349,13 @@ ul img {
 }
 
 .pet_card:not(:nth-child(4n)) {
-  margin-right: 5px;
+  margin-right: 20px;
 }
 
 .pet_card:not(:nth-last-child(-n + 4)) {
+  margin-bottom: 20px;
+}
+
+.pet_card_detail {
   margin-bottom: 5px;
 }

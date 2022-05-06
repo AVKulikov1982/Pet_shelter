@@ -8,6 +8,7 @@
 {% endblock menu %}
 
 {% block content %}
+<div id="text_content">
   <h2>Редактирование</h2>
     <form method="post" action="/catalog/pet/{{ pk }}/update_pet/" enctype="multipart/form-data">
       {% csrf_token %}
@@ -21,4 +22,5 @@
       <p>Опубликовано - {{ pet_form.published }}</p>
       <button class="btn" type="submit">Редактировать</button>
     </form>
+</div>
 {% endblock content %}

@@ -4,10 +4,12 @@
 <title>{% trans "Регистрация" %}</title>
 {% endblock title %}
 {% block content %}
+<div id="text_content">
 <h2>{% trans "Регистрация" %}</h2>
   <form method="post">
     {% csrf_token %}
     {{ register_form.as_p }}
     <button class="btn" type="submit">{% trans "Зарегистрироваться" %}</button>
   </form>
+</div>
 {% endblock content %}
