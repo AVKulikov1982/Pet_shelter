@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+from dotenv import load_dotenv
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -162,3 +162,11 @@ LOGGING = {
 		'propagate': True,
 	},
 }
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+RECIPIENTS_EMAIL = ["28kulikov@mail.ru"]
+EMAIL_USE_TLS=True
+EMAIL_HOST="smtp.mail.ru"
+EMAIL_PORT = 2525
+EMAIL_HOST_USER="28kulikov@mail.ru"
+EMAIL_HOST_PASSWORD="F8JjukhWfdBfJYHTaBT2"

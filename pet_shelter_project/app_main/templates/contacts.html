@@ -24,42 +24,18 @@
           <p><span>{% trans "Тел.:" %}</span> +X-xxx-xxx-1111</p>
         </div>
         <div class="email-text">
-          <p><span>{% trans "Email:" %}</span> xxxxx@xxxxx.com</p>
+          <p><span>{% trans "Email:" %}</span> test@mail.ru</p>
         </div>
       </div>
       <div class="contact-text">
         <h3>{% trans "Напишите нам" %}</h3>
-          <!-- Form Start-->
           <div class="contact_from">
-            <form action="#" method="post">
-              <!-- Message Input Area Start -->
-              <div class="contact_input_area">
-                <div class="row">
-                  <!-- Single Input Area Start -->
-                  <div class="col-md-12">
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="name" id="name" placeholder="имя" required>
-                    </div>
-                  </div>
-                  <!-- Single Input Area Start -->
-                  <div class="col-md-12">
-                    <div class="form-group">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="e-mail" required>
-                    </div>
-                  </div>
-                  <!-- Single Input Area Start -->
-                  <div class="col-12">
-                    <div class="form-group">
-                        <textarea name="message" class="form-control" id="message" cols="30" rows="4" placeholder="сообщение" required></textarea>
-                    </div>
-                  </div>
-                  <!-- Single Input Area Start -->
-                  <div class="col-12">
-                    <button type="submit" class="btn submit-btn">{% trans "Отправить" %}</button>
-                  </div>
-                </div>
-              </div>
-              <!-- Message Input Area End -->
+            <form class="form_settings" action="/contacts/" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <p>{% trans "Имя" %}</p> {{ send_message_form.name }}
+              <p>{% trans "Email" %}</p> {{ send_message_form.from_email }}
+              <p>{% trans "Сообщение" %}</p> {{ send_message_form.message }}
+              <button class="btn" type="submit">{% trans "Отправить" %}</button>
             </form>
             </div>
       </div>
