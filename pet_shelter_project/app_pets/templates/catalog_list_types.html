@@ -3,18 +3,18 @@
 
 {% block menu %}
 <ul id="menu">
-  <li><a href="/">Главная</a></li>
-  <li class="current"><a href="/catalog">Животные</a></li>
+  <li><a href="/">{% trans "Главная" %}</a></li>
+  <li class="current"><a href="/catalog">{% trans "Животные" %}</a></li>
   {% if request.user.is_authenticated %}
-  <li><a href="/add_pet">Добавить</a></li>
+  <li><a href="/add_pet">{% trans "Добавить" %}</a></li>
   {% endif %}
-  <li><a href="/contacts">Контакты</a></li>
+  <li><a href="/contacts">{% trans "Контакты" %}</a></li>
 </ul>
 {% endblock menu %}
 
 {% block content %}
 <div id="text_content">
-<h2>Каталог животных</h2>
+<h2>{% trans "Каталог животных" %}</h2>
 <div id="catalog">
   <ul id="catalog__menu">
     {% for value in context %}

@@ -2,33 +2,33 @@
 {% load i18n %}
 {% block menu %}
 <ul id="menu">
-  <li><a href="/">Главная</a></li>
-  <li><a href="/catalog">Животные</a></li>
+  <li><a href="/">{% trans "Главная" %}</a></li>
+  <li><a href="/catalog">{% trans "Животные" %}</a></li>
   {% if request.user.is_authenticated %}
-  <li><a href="/add_pet">Добавить</a></li>
+  <li><a href="/add_pet">{% trans "Добавить" %}</a></li>
   {% endif %}
-  <li class="current"><a href="/contacts">Контакты</a></li>
+  <li class="current"><a href="/contacts">{% trans "Контакты" %}</a></li>
 </ul>
 {% endblock menu %}
 	
 {% block content %}
   <div id="text_content">
-      <h2>Страница обратной связи</h2>
+      <h2>{% trans "Страница обратной связи" %}</h2>
       <div class="contact-text">
-        <h3>Контактные данные</h3>
+        <h3>{% trans "Контактные данные" %}</h3>
 
         <div class="address-text">
-          <p><span>Address:</span> Russia, Red Square, 1</p>
+          <p><span>{% trans "Адрес:" %}</span> Russia, Red Square, 1" %}</p>
         </div>
         <div class="phone-text">
-          <p><span>Phone:</span> +X-xxx-xxx-1111</p>
+          <p><span>{% trans "Тел.:" %}</span> +X-xxx-xxx-1111</p>
         </div>
         <div class="email-text">
-          <p><span>Email:</span> xxxxx@xxxxx.com</p>
+          <p><span>{% trans "Email:" %}</span> xxxxx@xxxxx.com</p>
         </div>
       </div>
       <div class="contact-text">
-        <h3>Напишите нам</h3>
+        <h3>{% trans "Напишите нам" %}</h3>
           <!-- Form Start-->
           <div class="contact_from">
             <form action="#" method="post">
@@ -55,7 +55,7 @@
                   </div>
                   <!-- Single Input Area Start -->
                   <div class="col-12">
-                    <button type="submit" class="btn submit-btn">Отправить</button>
+                    <button type="submit" class="btn submit-btn">{% trans "Отправить" %}</button>
                   </div>
                 </div>
               </div>
@@ -64,7 +64,7 @@
             </div>
       </div>
       <div class="contact-text">
-        <h3>Соцсети</h3>
+        <h3>{% trans "Соцсети" %}</h3>
         <a class="social-link" href="#">
           <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="40" height="40" viewBox="0 0 400 400" xml:space="preserve">
             <g transform="matrix(0.2 0 0 0.2 200 200)" id="Layer_1"  >

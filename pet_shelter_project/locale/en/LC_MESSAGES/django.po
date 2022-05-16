@@ -1,0 +1,342 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-16 11:31+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%"
+"100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\app_main\templates\base.html:7
+msgid "Приложение для управления базой данных животных"
+msgstr "Animal database management app"
+
+#: .\app_main\templates\base.html:33
+msgid "выбрать"
+msgstr "choose"
+
+#: .\app_main\templates\base.html:38
+msgid "Привет"
+msgstr "Hello"
+
+#: .\app_main\templates\base.html:41
+msgid "Админка"
+msgstr "Admin panel"
+
+#: .\app_main\templates\base.html:45
+msgid "Личный кабинет"
+msgstr "Personal account"
+
+#: .\app_main\templates\base.html:48
+msgid "Выйти"
+msgstr "Logout"
+
+#: .\app_main\templates\base.html:54 .\app_users\templates\registration.html:4
+#: .\app_users\templates\registration.html:8
+msgid "Регистрация"
+msgstr "Registaration"
+
+#: .\app_main\templates\base.html:57
+msgid "Войти"
+msgstr "Login"
+
+#: .\app_main\templates\base.html:64 .\app_main\templates\base.html:132
+msgid "Приют питомцев"
+msgstr "Pet shelter"
+
+#: .\app_main\templates\base.html:70 .\app_main\templates\contacts.html:5
+#: .\app_main\templates\index.html:5 .\app_pets\templates\add_pet.html:6
+#: .\app_pets\templates\catalog_detail_pet.html:6
+#: .\app_pets\templates\catalog_list_pets.html:6
+#: .\app_pets\templates\catalog_list_types.html:6
+#: .\app_pets\templates\update_pet.html:6
+msgid "Главная"
+msgstr "Main"
+
+#: .\app_main\templates\base.html:71 .\app_main\templates\contacts.html:6
+#: .\app_main\templates\index.html:6 .\app_pets\templates\add_pet.html:7
+#: .\app_pets\templates\catalog_detail_pet.html:7
+#: .\app_pets\templates\catalog_list_pets.html:7
+#: .\app_pets\templates\catalog_list_types.html:7
+msgid "Животные"
+msgstr "Pets"
+
+#: .\app_main\templates\base.html:73 .\app_main\templates\contacts.html:8
+#: .\app_main\templates\index.html:8 .\app_pets\templates\add_pet.html:9
+#: .\app_pets\templates\add_pet.html:27
+#: .\app_pets\templates\catalog_detail_pet.html:9
+#: .\app_pets\templates\catalog_list_pets.html:9
+#: .\app_pets\templates\catalog_list_types.html:9
+msgid "Добавить"
+msgstr "Add"
+
+#: .\app_main\templates\base.html:75 .\app_main\templates\base.html:132
+#: .\app_main\templates\contacts.html:10 .\app_main\templates\index.html:10
+#: .\app_pets\templates\add_pet.html:11
+#: .\app_pets\templates\catalog_detail_pet.html:11
+#: .\app_pets\templates\catalog_list_pets.html:11
+#: .\app_pets\templates\catalog_list_types.html:11
+msgid "Контакты"
+msgstr "Contacts"
+
+#: .\app_main\templates\base.html:89
+msgid "Волонтерский проект"
+msgstr "Volunteer project"
+
+#: .\app_main\templates\base.html:90
+msgid "Сайт приюта для бездомных животных создан на добровольной основе."
+msgstr "The site of the shelter for homeless animals was created on a voluntary basis."
+
+#: .\app_main\templates\base.html:91
+msgid ""
+"Наша цель — помощь животным приюта и привлечение внимания к проблемам "
+"бездомных животных."
+msgstr "Our goal is to help shelter animals and draw attention to the problems of homeless animals."
+
+#: .\app_main\templates\base.html:92
+msgid ""
+"В первую очередь, мы хотим помочь обрести нашим подопечным свой дом и хозяев."
+msgstr "First of all, we want to help our wards find their own home and owners."
+
+#: .\app_main\templates\base.html:93
+msgid ""
+"Животных много, хороших и несчастных! Давайте поможем безнадзорным животным "
+"вместе!"
+msgstr "There are many animals, good and unfortunate! Let's help stray animals together!"
+
+#: .\app_main\templates\base.html:94
+msgid "Спасите одну жизнь — возьмите домой средоточие радости и благодарности!"
+msgstr "Save one life - take home a center of joy and gratitude!"
+
+#: .\app_main\templates\base.html:117
+msgid "Блок левый"
+msgstr "Block left"
+
+#: .\app_main\templates\base.html:118 .\app_main\templates\base.html:123
+#: .\app_main\templates\base.html:128
+msgid "Дополнительное описание"
+msgstr ""
+
+#: .\app_main\templates\base.html:119 .\app_main\templates\base.html:124
+#: .\app_main\templates\base.html:129
+msgid "Подробнее"
+msgstr "Additional description"
+
+#: .\app_main\templates\base.html:122
+msgid "Блок средний"
+msgstr "Block medium"
+
+#: .\app_main\templates\base.html:127
+msgid "Блок правый"
+msgstr "Block right"
+
+#: .\app_main\templates\base.html:132
+msgid "API"
+msgstr "API"
+
+#: .\app_main\templates\contacts.html:16
+msgid "Страница обратной связи"
+msgstr "Feedback page"
+
+#: .\app_main\templates\contacts.html:18
+msgid "Контактные данные"
+msgstr "Contact details"
+
+#: .\app_main\templates\contacts.html:21
+msgid "Адрес:"
+msgstr "Adress:"
+
+#: .\app_main\templates\contacts.html:24
+msgid "Тел.:"
+msgstr "Phone:"
+
+#: .\app_main\templates\contacts.html:27
+msgid "Email:"
+msgstr "Email:"
+
+#: .\app_main\templates\contacts.html:31
+msgid "Напишите нам"
+msgstr "Write to us"
+
+#: .\app_main\templates\contacts.html:58
+msgid "Отправить"
+msgstr "Send"
+
+#: .\app_main\templates\contacts.html:67
+msgid "Соцсети"
+msgstr "Social network"
+
+#: .\app_pets\models.py:7 .\app_pets\models.py:19
+msgid "тип животного"
+msgstr "animal type"
+
+#: .\app_pets\models.py:18
+msgid "кличка животного"
+msgstr "animal nickname"
+
+#: .\app_pets\models.py:20
+msgid "возраст животного"
+msgstr "animal age"
+
+#: .\app_pets\models.py:21
+msgid "дата прибытия в приют"
+msgstr "date of arrival at the shelter"
+
+#: .\app_pets\models.py:22
+msgid "вес животного"
+msgstr "animal weight"
+
+#: .\app_pets\models.py:23
+msgid "рост животного"
+msgstr "animal growth"
+
+#: .\app_pets\models.py:24
+msgid "особые приметы животного"
+msgstr "animal special signs"
+
+#: .\app_pets\models.py:25
+msgid "опубликовать"
+msgstr "publish"
+
+#: .\app_pets\templates\add_pet.html:17
+msgid "Добавить питомца"
+msgstr "add pet"
+
+#: .\app_pets\templates\add_pet.html:20
+#: .\app_pets\templates\update_pet.html:15
+msgid "Кличка"
+msgstr "Nickname"
+
+#: .\app_pets\templates\add_pet.html:21
+#: .\app_pets\templates\update_pet.html:16
+msgid "Тип"
+msgstr "Type"
+
+#: .\app_pets\templates\add_pet.html:22
+#: .\app_pets\templates\update_pet.html:17
+msgid "Возраст"
+msgstr "Age"
+
+#: .\app_pets\templates\add_pet.html:23
+#: .\app_pets\templates\update_pet.html:18
+msgid "Дата прибытия"
+msgstr "Date of arrival"
+
+#: .\app_pets\templates\add_pet.html:24
+#: .\app_pets\templates\update_pet.html:19
+msgid "Вес"
+msgstr "Weight"
+
+#: .\app_pets\templates\add_pet.html:25
+#: .\app_pets\templates\update_pet.html:20
+msgid "Рост"
+msgstr "Growth"
+
+#: .\app_pets\templates\add_pet.html:26
+#: .\app_pets\templates\update_pet.html:21
+msgid "Особые приметы"
+msgstr "Special signs"
+
+#: .\app_pets\templates\catalog_detail_pet.html:17
+msgid "Карточка животного"
+msgstr "Animal card"
+
+#: .\app_pets\templates\catalog_detail_pet.html:24
+#: .\app_pets\templates\update_pet.html:25
+#: .\app_users\templates\profile_update.html:19
+msgid "Редактировать"
+msgstr "Edit"
+
+#: .\app_pets\templates\catalog_list_pets.html:17
+#: .\app_pets\templates\catalog_list_types.html:17
+msgid "Каталог животных"
+msgstr "Animal catalog"
+
+#: .\app_pets\templates\update_pet.html:12
+#: .\app_users\templates\profile_update.html:5
+msgid "Редактирование"
+msgstr "Editing"
+
+#: .\app_pets\templates\update_pet.html:23
+msgid "Опубликовано"
+msgstr "Published"
+
+#: .\app_users\forms.py:8 .\app_users\templates\profile_update.html:12
+msgid "Имя"
+msgstr "FirstName"
+
+#: .\app_users\forms.py:9 .\app_users\templates\profile_update.html:13
+msgid "Фамилия"
+msgstr "Surname"
+
+#: .\app_users\forms.py:10
+msgid "Email"
+msgstr "Email"
+
+#: .\app_users\models.py:9
+msgid "номер телефона"
+msgstr "Phone number"
+
+#: .\app_users\models.py:10
+msgid "дата рождения"
+msgstr "date of birth"
+
+#: .\app_users\templates\login.html:4 .\app_users\templates\login.html:8
+msgid "Страница входа"
+msgstr "Login page"
+
+#: .\app_users\templates\login.html:12
+msgid "Логин"
+msgstr "Login"
+
+#: .\app_users\templates\profile.html:5
+msgid "Ваши данные"
+msgstr "Your data"
+
+#: .\app_users\templates\profile.html:10
+msgid "Username"
+msgstr "Username"
+
+#: .\app_users\templates\profile.html:11
+msgid "Имя - "
+msgstr "Firstname - "
+
+#: .\app_users\templates\profile.html:12
+msgid "Фамилия - "
+msgstr "Surname - "
+
+#: .\app_users\templates\profile.html:13
+msgid "Email - "
+msgstr "Email - "
+
+#: .\app_users\templates\profile.html:15
+msgid "Номер телефона - "
+msgstr "Phone number"
+
+#: .\app_users\templates\profile_update.html:14
+msgid "загрузить аватар"
+msgstr "add avatar"
+
+#: .\app_users\templates\profile_update.html:17
+msgid "Новый пароль"
+msgstr "New password"
+
+#: .\app_users\templates\profile_update.html:18
+msgid "New password again"
+msgstr ""
+
+#: .\app_users\templates\registration.html:12
+msgid "Зарегистрироваться"
+msgstr "Register"

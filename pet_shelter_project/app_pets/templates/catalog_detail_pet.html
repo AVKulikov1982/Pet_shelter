@@ -3,28 +3,25 @@
 {% load static %}
 {% block menu %}
 <ul id="menu">
-  <li><a href="/">Главная</a></li>
-  <li class="current"><a href="/catalog">Животные</a></li>
+  <li><a href="/">{% trans "Главная" %}</a></li>
+  <li class="current"><a href="/catalog">{% trans "Животные" %}</a></li>
   {% if request.user.is_authenticated %}
-  <li><a href="/add_pet">Добавить</a></li>
+  <li><a href="/add_pet">{% trans "Добавить" %}</a></li>
   {% endif %}
-  <li><a href="/contacts">Контакты</a></li>
+  <li><a href="/contacts">{% trans "Контакты" %}</a></li>
 </ul>
 {% endblock menu %}
 
 {% block content %}
 <div id="text_content">
-<h2>Карточка животного</h2>
+<h2>{% trans "Карточка животного" %}</h2>
 <div class="pet_card pet_card_detail">
   <img class="pet_card_img" src="{% static 'images/pets/2_cat.jpg' %}">
   <p>{{ object.name }}</p>
   <p>{{ object.special_signs }}</p>
 </div>
 {% if request.user.is_authenticated %}
-<button class="btn"><a href="{{ object.id }}/update_pet">Редактировать</a></button>
-{% if request.user.is_superuser %}
-<button class="btn"><a href="/delete_pets">Удалить</a></button>
+<button class="btn"><a href="{{ object.id }}/update_pet">{% trans "Редактировать" %}</a></button>
 {% endif %}
-  {% endif %}
 </div>
 {% endblock content %}

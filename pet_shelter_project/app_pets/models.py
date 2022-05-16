@@ -22,7 +22,7 @@ class PetModel(models.Model):
 	weight = models.PositiveIntegerField(verbose_name=_('вес животного'))
 	growth = models.PositiveIntegerField(verbose_name=_('рост животного'))
 	special_signs = models.CharField(max_length=200, verbose_name=_('особые приметы животного'))
-	published = models.BooleanField(default=False)
+	published = models.BooleanField(default=False, verbose_name=_('опубликовать'))
 
 	def __str__(self):
 		return self.name

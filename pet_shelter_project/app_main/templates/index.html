@@ -2,11 +2,11 @@
 {% load i18n %}
 {% block menu %}
 <ul id="menu">
-  <li class="current"><a href="/">Главная</a></li>
-  <li><a href="/catalog">Животные</a></li>
+  <li class="current"><a href="/">{% trans "Главная" %}</a></li>
+  <li><a href="/catalog">{% trans "Животные" %}</a></li>
   {% if request.user.is_authenticated %}
-  <li><a href="/add_pet">Добавить</a></li>
+  <li><a href="/add_pet">{% trans "Добавить" %}</a></li>
   {% endif %}
-  <li><a href="/contacts">Контакты</a></li>
+  <li><a href="/contacts">{% trans "Контакты" %}</a></li>
 </ul>
 {% endblock menu %}

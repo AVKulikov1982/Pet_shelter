@@ -3,24 +3,26 @@
 
 {% block menu %}
 <ul id="menu">
-  <li><a href="/">Главная</a></li>
+  <li><a href="/">{% trans "Главная" %}</a></li>
 </ul>
 {% endblock menu %}
 
 {% block content %}
 <div id="text_content">
-  <h2>Редактирование</h2>
+  <h2>{% trans "Редактирование" %}</h2>
     <form method="post" action="/catalog/pet/{{ pk }}/update_pet/" enctype="multipart/form-data">
       {% csrf_token %}
-      <p>Кличка - {{ pet_form.name }}</p>
-      <p>Тип - {{ pet_form.type }}</p>
-      <p>Возраст - {{ pet_form.age }}</p>
-      <p>Дата прибытия - {{ pet_form.date_from }}</p>
-      <p>Вес - {{ pet_form.weight }}</p>
-      <p>Рост - {{ pet_form.growth }}</p>
-      <p>Особые приметы - {{ pet_form.special_signs }}</p>
-      <p>Опубликовано - {{ pet_form.published }}</p>
-      <button class="btn" type="submit">Редактировать</button>
+      <p>{% trans "Кличка" %} - {{ pet_form.name }}</p>
+      <p>{% trans "Тип" %} - {{ pet_form.type }}</p>
+      <p>{% trans "Возраст" %} - {{ pet_form.age }}</p>
+      <p>{% trans "Дата прибытия" %} - {{ pet_form.date_from }}</p>
+      <p>{% trans "Вес" %} - {{ pet_form.weight }}</p>
+      <p>{% trans "Рост" %} - {{ pet_form.growth }}</p>
+      <p>{% trans "Особые приметы" %} - {{ pet_form.special_signs }}</p>
+      {% if request.user.is_superuser %}
+      <p>{% trans "Опубликовано" %} - {{ pet_form.published }}</p>
+      {% endif %}
+      <button class="btn" type="submit">{% trans "Редактировать" %}</button>
     </form>
 </div>
 {% endblock content %}
