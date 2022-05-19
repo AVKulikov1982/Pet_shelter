@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views import generic, View
-from .models import PetType, PetModel
-from .forms import AddPetForm, UpdatePetForm
+from .models import PetType, PetModel, File
+from .forms import AddPetForm, UploadFileForm, UpdatePetForm, PublishedForm
+from django.http import HttpResponseBadRequest
 
 
 class CatalogListView(View):
@@ -9,6 +10,7 @@ class CatalogListView(View):
 	@staticmethod
 	def get(request, type_id):
 		pets = PetModel.objects.filter(type=type_id)
+
 		return render(request, 'catalog_list_pets.html', context={'pets': pets})
 
 
@@ -47,12 +49,13 @@ class AddPet(View):
 	@staticmethod
 	def get(request):
 		pet_form = AddPetForm()
-		return render(request, 'add_pet.html', context={'pet_form': pet_form})
+		file_form = UploadFileForm()
+		return render(request, 'add_pet.html', context={'pet_form': pet_form, 'file_form': file_form})
 
 	@staticmethod
 	def post(request):
 		pet_form = AddPetForm(request.POST)
-
+		file_form = UploadFileForm(request.POST, request.FILES)
 		if pet_form.is_valid():
 			name = pet_form.cleaned_data.get('name')
 			type = pet_form.cleaned_data.get('type')
@@ -63,8 +66,13 @@ class AddPet(View):
 			special_signs = pet_form.cleaned_data.get('special_signs')
 			pet = PetModel.objects.create(name=name, type=type, age=age, date_from=date_from, weight=weight,
 										 growth=growth, special_signs=special_signs)
-			pet.save()
-		return redirect('/')
+			if file_form.is_valid():
+				file = request.FILES.getlist('file')[0]
+				file_object = File(file=file)
+				file_object.pet = pet
+				file_object.save()
+			return redirect('/')
+		return HttpResponseBadRequest('что-то ввели неправильно')
 
 
 
@@ -76,3 +84,15 @@ def catalog(request):
 		PetType.objects.create(title='Собаки')
 	context = PetType.objects.all()
 	return render(request, 'catalog_list_types.html', {'context': context})
+
+
+def unpublished(request):
+	pets = PetModel.objects.filter(published=False)
+	published_form = PublishedForm()
+	if request.method == 'POST':
+		if request.POST.getlist('published'):
+			for pet in pets:
+				pet.published = True
+			pets.bulk_update(pets, ['published'])
+			return redirect('/')
+	return render(request, 'unpublished.html', context={'pets': pets, 'published_form': published_form})

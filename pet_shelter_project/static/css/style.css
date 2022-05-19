@@ -182,7 +182,7 @@ ul#menu li.current a
 
 
 .contact-text {
-  margin-top: 15px;
+  margin-top: 5px;
   font: normal 80% Georgia, serif, Arial;
 }
 
@@ -264,6 +264,14 @@ ul img {
   color: #47433F;
  }
 
+.form_input {
+  margin-bottom: 5px;
+ }
+
+.social-link {
+  margin-right: 10px;
+}
+
 .btn {
   border: none;
   background-color: transparent;
@@ -316,7 +324,7 @@ ul img {
 
 .pet_card {
   width: 229px;
-  height: 227px;
+  height: 250px;
   padding: 5px;
   flex-direction: column;
   border: 1px solid #CC9933;
@@ -334,4 +342,9 @@ ul img {
 
 .pet_card_detail {
   margin-bottom: 5px;
+}
+
+.form_published {
+  padding: 0 20px 0 20px;
+  margin-bottom: 10px;
 }

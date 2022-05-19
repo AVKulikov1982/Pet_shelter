@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from dotenv import load_dotenv
 import os
 
+
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -75,10 +77,21 @@ WSGI_APPLICATION = 'pet_shelter_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+# 	'default': {
+# 		'ENGINE': 'django.db.backends.sqlite3',
+# 		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+# 	}
+# }
+
 DATABASES = {
 	'default': {
-		'ENGINE': 'django.db.backends.sqlite3',
-		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+		'ENGINE': 'django.db.backends.postgresql',
+		'NAME': 'pet_shelters',
+		'USER' : 'postgres',
+		'PASSWORD' : 'admin',
+		'HOST' : '127.0.0.1',
+		'PORT' : '5432',
 	}
 }
 
@@ -164,9 +177,10 @@ LOGGING = {
 }
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-RECIPIENTS_EMAIL = ["28kulikov@mail.ru"]
-EMAIL_USE_TLS=True
-EMAIL_HOST="smtp.mail.ru"
+RECIPIENTS_EMAIL = []
+RECIPIENTS_EMAIL.append(os.getenv('RECIPIENTS_EMAIL'))
+EMAIL_USE_TLS = True
+EMAIL_HOST = "smtp.mail.ru"
 EMAIL_PORT = 2525
-EMAIL_HOST_USER="28kulikov@mail.ru"
-EMAIL_HOST_PASSWORD="F8JjukhWfdBfJYHTaBT2"
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')

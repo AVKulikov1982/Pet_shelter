@@ -14,12 +14,18 @@
 
 {% block content %}
 
-<h2 class="pet_cards_title">{% trans "Каталог животных" %}</h2>
-<div>
+<h2 class="pet_cards_title">{% trans "Каталог неопубликованных животных" %}</h2>
+
 <div id="catalog">
+  <div class="contact_from">
+  <form class="form_published" action="/catalog/unpublished/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="checkbox" name="published" id="id_published">
+    <button class="btn" type="submit">{% trans "Опубликовать всех" %}</button>
+  </form>
+  </div>
   <ul class="pet_cards">
     {% for pet in pets %}
-    {% if pet.published %}
     <li class="pet_card">
       <a href="pet/{{ pet.id }}">
         <img class="pet_card_img" src="{% static 'images/pets/2_cat.jpg' %}">
@@ -27,7 +33,6 @@
         <p>{{ pet.special_signs }}</p>
       </a>
     </li>
-    {% endif %}
     {% endfor %}
   </ul>
 

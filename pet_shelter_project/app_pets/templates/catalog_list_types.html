@@ -20,6 +20,9 @@
     {% for value in context %}
     <li><a href="{{ value.id }}">{{ value.title }}</a></li>
     {% endfor %}
+    {% if request.user.is_superuser %}
+    <li><a href="unpublished/">неопубликованные</a></li>
+    {% endif %}
   </ul>
 </div>
 </div>

@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from PIL import Image
 
 
 class PetType(models.Model):
@@ -26,3 +27,19 @@ class PetModel(models.Model):
 
 	def __str__(self):
 		return self.name
+
+
+class File(models.Model):
+	file = models.ImageField(upload_to='files/%Y-%m-%d')
+	created_at = models.DateField(auto_now_add=True)
+	pet = models.ForeignKey('PetModel', blank=True, on_delete=models.CASCADE)
+
+	def save(self, *args, **kwargs):
+		super(File, self).save(*args, **kwargs)
+
+		if self.file:
+			filename = self.file.path
+			image = Image.open(filename)
+			image = image.resize((229, 167), Image.ANTIALIAS)
+			image.save(filename)
+
