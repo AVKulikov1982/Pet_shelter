@@ -63,7 +63,7 @@ a:hover {
 }
 
 ul
-{ margin: 2px 0 22px 0px;
+{ margin: 0 0 20px 0px;
   line-height: 1.7em;
   font-style: normal;
   font-size: 100%;
@@ -347,4 +347,8 @@ ul img {
 .form_published {
   padding: 0 20px 0 20px;
   margin-bottom: 10px;
+}
+
+.pet_card_published {
+  margin-bottom: 20px;
 }

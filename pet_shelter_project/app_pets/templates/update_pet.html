@@ -19,6 +19,7 @@
       <p>{% trans "Вес" %} - {{ pet_form.weight }}</p>
       <p>{% trans "Рост" %} - {{ pet_form.growth }}</p>
       <p>{% trans "Особые приметы" %} - {{ pet_form.special_signs }}</p>
+      <p>{% trans "Фото" %} - {{ file_form.file }}</p>
       {% if request.user.is_superuser %}
       <p>{% trans "Опубликовано" %} - {{ pet_form.published }}</p>
       {% endif %}

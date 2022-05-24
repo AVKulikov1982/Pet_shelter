@@ -22,7 +22,7 @@
     {% if pet.published %}
     <li class="pet_card">
       <a href="pet/{{ pet.id }}">
-        <img class="pet_card_img" src="{% static 'images/pets/2_cat.jpg' %}">
+        <img class="pet_card_img" src="/media/{{ pet.file.file }}">
         <p>{{ pet.name }}</p>
         <p>{{ pet.special_signs }}</p>
       </a>
