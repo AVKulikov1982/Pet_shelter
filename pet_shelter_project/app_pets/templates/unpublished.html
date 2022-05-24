@@ -1,0 +1,39 @@
+﻿{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block menu %}
+<ul id="menu">
+  <li><a href="/">{% trans "Главная" %}</a></li>
+  <li class="current"><a href="/catalog">{% trans "Животные" %}</a></li>
+  {% if request.user.is_authenticated %}
+  <li><a href="/add_pet">{% trans "Добавить" %}</a></li>
+  {% endif %}
+  <li><a href="/contacts">{% trans "Контакты" %}</a></li>
+</ul>
+{% endblock menu %}
+
+{% block content %}
+
+<h2 class="pet_cards_title">{% trans "Каталог неопубликованных животных" %}</h2>
+
+<div id="catalog">
+  <div class="contact_from">
+    <form class="form_published" action="/catalog/unpublished/pet/{{ pet.id }}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="checkbox" name="published" id="id_published">
+      <button class="btn" type="submit">{% trans "Опубликовать" %}</button>
+    </form>
+  </div>
+  <div class="pet_cards pet_card_published">
+    <div class="pet_card">
+      <img class="pet_card_img" src="/media/{{ pet.file.file }}">
+      <p>{{ pet.name }}</p>
+      <p>{{ pet.special_signs }}</p>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+{% block slider %}
+{% endblock slider %}
