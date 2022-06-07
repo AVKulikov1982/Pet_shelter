@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import generic, View
 from .models import PetType, PetModel, File
 from .forms import AddPetForm, UploadFileForm, UpdatePetForm, PublishedForm
-from django.http import HttpResponseBadRequest
+from django.http import HttpResponseBadRequest, HttpResponseForbidden
 
 
 class CatalogListView(View):
@@ -33,25 +33,27 @@ class UpdatePet(View):
 
 	@staticmethod
 	def post(request, pk):
-		pet = PetModel.objects.get(id=pk)
-		pet_form = UpdatePetForm(request.POST)
-		file_form = UploadFileForm(request.POST, request.FILES)
-		if pet_form.is_valid():
-			print('OKOKO')
-			pet.name = pet_form.cleaned_data.get('name')
-			pet.type = pet_form.cleaned_data.get('type')
-			pet.age = pet_form.cleaned_data.get('age')
-			pet.date_from = pet_form.cleaned_data.get('date_from')
-			pet.weight = pet_form.cleaned_data.get('weight')
-			pet.growth = pet_form.cleaned_data.get('growth')
-			pet.special_signs = pet_form.cleaned_data.get('special_signs')
-			pet.published = pet_form.cleaned_data.get('published')
-			if file_form.is_valid() and request.FILES.getlist('file'):
-				file = request.FILES.getlist('file')[0]
-				file_object = File(file=file)
-				file_object.save()
-				pet.file = file_object
-			pet.save()
+		if request.user.is_authenticated:
+			pet = PetModel.objects.get(id=pk)
+			pet_form = UpdatePetForm(request.POST)
+			file_form = UploadFileForm(request.POST, request.FILES)
+			if pet_form.is_valid():
+				pet.name = pet_form.cleaned_data.get('name')
+				pet.type = pet_form.cleaned_data.get('type')
+				pet.age = pet_form.cleaned_data.get('age')
+				pet.date_from = pet_form.cleaned_data.get('date_from')
+				pet.weight = pet_form.cleaned_data.get('weight')
+				pet.growth = pet_form.cleaned_data.get('growth')
+				pet.special_signs = pet_form.cleaned_data.get('special_signs')
+				pet.published = pet_form.cleaned_data.get('published')
+				if file_form.is_valid() and request.FILES.getlist('file'):
+					file = request.FILES.getlist('file')[0]
+					file_object = File(file=file)
+					file_object.save()
+					pet.file = file_object
+				pet.save()
+		else:
+			return HttpResponseForbidden('нет прав пользователя')
 		return redirect('/')
 
 
@@ -65,25 +67,28 @@ class AddPet(View):
 
 	@staticmethod
 	def post(request):
-		pet_form = AddPetForm(request.POST)
-		file_form = UploadFileForm(request.POST, request.FILES)
-		if pet_form.is_valid():
-			name = pet_form.cleaned_data.get('name')
-			type = pet_form.cleaned_data.get('type')
-			age = pet_form.cleaned_data.get('age')
-			date_from = pet_form.cleaned_data.get('date_from')
-			weight = pet_form.cleaned_data.get('weight')
-			growth = pet_form.cleaned_data.get('growth')
-			special_signs = pet_form.cleaned_data.get('special_signs')
-			file_object = None
-			if file_form.is_valid() and request.FILES.getlist('file'):
-				file = request.FILES.getlist('file')[0]
-				file_object = File(file=file)
-				file_object.save()
+		if request.user.is_authenticated:
+			pet_form = AddPetForm(request.POST)
+			file_form = UploadFileForm(request.POST, request.FILES)
+			if pet_form.is_valid():
+				name = pet_form.cleaned_data.get('name')
+				type = pet_form.cleaned_data.get('type')
+				age = pet_form.cleaned_data.get('age')
+				date_from = pet_form.cleaned_data.get('date_from')
+				weight = pet_form.cleaned_data.get('weight')
+				growth = pet_form.cleaned_data.get('growth')
+				special_signs = pet_form.cleaned_data.get('special_signs')
+				file_object = None
+				if file_form.is_valid() and request.FILES.getlist('file'):
+					file = request.FILES.getlist('file')[0]
+					file_object = File(file=file)
+					file_object.save()
 
-			PetModel.objects.create(name=name, type=type, age=age, date_from=date_from, weight=weight,
-										  growth=growth, special_signs=special_signs, file=file_object)
-			return redirect('/')
+				PetModel.objects.create(name=name, type=type, age=age, date_from=date_from, weight=weight,
+											  growth=growth, special_signs=special_signs, file=file_object)
+				return redirect('/')
+		else:
+			return HttpResponseForbidden('нет прав пользователя')
 		return HttpResponseBadRequest('что-то ввели неправильно')
 
 
@@ -101,11 +106,14 @@ def unpublished_list(request):
 	pets = PetModel.objects.select_related('file').filter(published=False)
 	published_form = PublishedForm()
 	if request.method == 'POST':
-		if request.POST.getlist('published'):
-			for pet in pets:
-				pet.published = True
-			pets.bulk_update(pets, ['published'])
-			return redirect('/')
+		if request.user.is_superuser:
+			if request.POST.getlist('published'):
+				for pet in pets:
+					pet.published = True
+				pets.bulk_update(pets, ['published'])
+				return redirect('/')
+		else:
+			return HttpResponseForbidden('нет прав администратора')
 	return render(request, 'unpublished_list.html', context={'pets': pets, 'published_form': published_form})
 
 
@@ -113,9 +121,12 @@ def unpublished(request, pk):
 	data = PetModel.objects.select_related('file').get(id=pk)
 	published_form = PublishedForm()
 	if request.method == 'POST':
-		if request.POST.getlist('published'):
-			pet = PetModel.objects.get(id=pk)
-			pet.published = True
-			pet.save()
-			return redirect('/')
+		if request.user.is_superuser:
+			if request.POST.getlist('published'):
+				pet = PetModel.objects.get(id=pk)
+				pet.published = True
+				pet.save()
+				return redirect('/')
+		else:
+			return HttpResponseForbidden('нет прав администратора')
 	return render(request, 'unpublished.html', context={'pet': data, 'published_form': published_form})

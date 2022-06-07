@@ -36,11 +36,11 @@ class PetModel(models.Model):
 
 	name = models.CharField(max_length=30, db_index=True, verbose_name=_('кличка животного'))
 	type = models.ForeignKey(PetType, on_delete=models.CASCADE, verbose_name=_('тип животного'), default=None, null=True)
-	age = models.PositiveIntegerField(verbose_name=_('возраст животного'))
+	age = models.PositiveIntegerField(db_index=True, verbose_name=_('возраст животного'))
 	date_from = models.DateField(verbose_name=_('дата прибытия в приют'))
 	weight = models.PositiveIntegerField(verbose_name=_('вес животного'))
-	growth = models.PositiveIntegerField(verbose_name=_('рост животного'))
-	special_signs = models.CharField(max_length=200, verbose_name=_('особые приметы животного'))
+	growth = models.PositiveIntegerField(db_index=True, verbose_name=_('рост животного'))
+	special_signs = models.CharField(max_length=200, db_index=True, verbose_name=_('особые приметы животного'))
 	published = models.BooleanField(default=False, verbose_name=_('опубликовать'))
 	file = models.ForeignKey(File, on_delete=models.CASCADE, verbose_name=_('фото животного'), default=None, null=True)
 
