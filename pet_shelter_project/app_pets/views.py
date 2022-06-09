@@ -18,7 +18,6 @@ class CatalogDetailView(View):
 	@staticmethod
 	def get(request, pk):
 		pet = PetModel.objects.select_related('file').get(id=pk)
-		print(pet.file)
 		return render(request, 'catalog_detail_pet.html', context={'pet': pet})
 
 
@@ -52,6 +51,8 @@ class UpdatePet(View):
 					file_object.save()
 					pet.file = file_object
 				pet.save()
+			else:
+				return HttpResponseBadRequest('что-то неправильно ввели')
 		else:
 			return HttpResponseForbidden('нет прав пользователя')
 		return redirect('/')
@@ -85,11 +86,12 @@ class AddPet(View):
 					file_object.save()
 
 				PetModel.objects.create(name=name, type=type, age=age, date_from=date_from, weight=weight,
-											  growth=growth, special_signs=special_signs, file=file_object)
+										growth=growth, special_signs=special_signs, file=file_object)
 				return redirect('/')
+			else:
+				return HttpResponseBadRequest('что-то неправильно ввели')
 		else:
 			return HttpResponseForbidden('нет прав пользователя')
-		return HttpResponseBadRequest('что-то ввели неправильно')
 
 
 def catalog(request):
@@ -100,6 +102,18 @@ def catalog(request):
 		PetType.objects.create(title='Собаки')
 	context = PetType.objects.all()
 	return render(request, 'catalog_list_types.html', {'context': context})
+
+
+def delete(request, pk):
+	if request.method == 'GET':
+		if request.user.is_superuser:
+			pet = PetModel.objects.get(id=pk)
+			pet.delete()
+		else:
+			return HttpResponseForbidden('нет прав')
+		return redirect('/')
+	else:
+		return HttpResponseBadRequest('что-то не так')
 
 
 def unpublished_list(request):

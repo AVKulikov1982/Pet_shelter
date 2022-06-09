@@ -20,8 +20,12 @@
   <p>{{ pet.name }}</p>
   <p>{{ pet.special_signs }}</p>
 </div>
-{% if request.user.is_authenticated %}
+{% if request.user.is_superuser %}
+<button class="btn"><a href="{{ pet.id }}/update_pet">{% trans "Редактировать" %}</a></button>
+<button class="btn"><a href="{{ pet.id }}/delete">{% trans "Удалить" %}</a></button>
+{% elif request.user.is_authenticated %}
 <button class="btn"><a href="{{ pet.id }}/update_pet">{% trans "Редактировать" %}</a></button>
 {% endif %}
+
 </div>
 {% endblock content %}

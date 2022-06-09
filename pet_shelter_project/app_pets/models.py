@@ -7,10 +7,6 @@ class PetType(models.Model):
 
 	title = models.CharField(max_length=30, verbose_name=_('тип животного'))
 
-	def get_object(self):
-		view_object = super(PetType, self).get_object()
-		print(view_object)
-
 	def __str__(self):
 		return self.title
 
@@ -46,7 +42,3 @@ class PetModel(models.Model):
 
 	def __str__(self):
 		return self.name
-
-
-
-

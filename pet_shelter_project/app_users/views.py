@@ -95,8 +95,7 @@ def register(request):
 
 def profile(request, user_id):
 	avatar = None
-	user = User.objects.values('is_superuser').get(id=user_id)
-	if user['is_superuser'] == 1:
+	if request.user.is_superuser:
 		Profile.objects.get_or_create(user_id=user_id)
 	if Avatar.objects.filter(user_id=user_id):
 		avatar = Avatar.objects.get(user_id=user_id).file
